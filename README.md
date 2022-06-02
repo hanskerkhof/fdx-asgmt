@@ -1,105 +1,85 @@
+# fdx-asgmt
 
+## About
 
-# FdxAsgmt
+This project was generated using the amazing [Nx](https://nx.dev) build system.
+It uses most of the default settings for an NX project. For the form inputs and error display [Angular Material Components](https://material.angular.io/) is used.
 
-This project was generated using [Nx](https://nx.dev).
+The reactive form is an ui-component in a (publishable) library. The workspace app shows the implementation and will submit the form data to a test endpoint.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+The reactive form covers the use of Angular `formBuilder`, `Validators` and a custom validator for the password check. To make use of the material `mat-error` component a custom `ErrorStateMatcher` is implemented.
 
-🔎 **Smart, Fast and Extensible Build System**
+## Prerequisites
 
-## Quick Start & Documentation
+To run this app locally you must have the following tools installed.
 
-[Nx Documentation](https://nx.dev/angular)
+1. Node.js 16.x LTS [Node.js Downloads](https://nodejs.org/en/download/)
+2. Git (see [Download Git](https://git-scm.com/))
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+## Installation
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
+1. Clone the git repository in your terminal
 
-## Adding capabilities to your workspace
+```bash
+git clone git@github.com:hanskerkhof/fdx-asgmt.git
+```
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+2. Go to the app directory
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+```bash
+cd dx-asgmt.git
+```
 
-Below are our core plugins:
+3. Install dependencies
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+```bash
+npm i
+```
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Running the development app
 
-## Generate an application
+```bash
+npm run start workspace
+```
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+> Once it is running, open it in your browser [http://localhost:4200/](http://localhost:4200/)
 
-> You can use any of the plugins above to generate applications as well.
+## Developing
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+Running the tests (unit and e2e)
 
-## Generate a library
+```bash
+npx nx test --watch
+```
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+```bash
+npx nx e2e workspace-e2e --watch
+```
 
-> You can also use any of the plugins above to generate libraries as well.
+> Make sure that you do not have the workspace app running on port 4200 when running the e2e test.
 
-Libraries are shareable across libraries and applications. They can be imported from `@fdx-asgmt/mylib`.
+## Development
 
-## Development server
+### Building
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Build the application
 
-## Code scaffolding
+```bash
+npm run build
+```
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+> To run the compiled app you can use `npx http-serve dist/apps/workspace/`
 
-## Build
+### Linting
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Format un-formatted code
 
-## Running unit tests
+```bash
+npm run format
+```
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+Runs the eslint linter
 
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+```bash
+npm run lint
+```

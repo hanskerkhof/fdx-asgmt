@@ -17,7 +17,10 @@
           "apps/workspace/src/favicon.ico",
           "apps/workspace/src/assets"
         ],
-        "styles": ["apps/workspace/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/workspace/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

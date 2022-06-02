@@ -1,0 +1,149 @@
+<mat-card class="example-card">
+  <mat-card-title-group>
+    <mat-card-title>Sign up</mat-card-title>
+    <mat-card-subtitle
+      >To sign up please enter your details below.</mat-card-subtitle
+    >
+  </mat-card-title-group>
+  <mat-card-content>
+    <form
+      [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit()"
+      data-test="signup-form"
+    >
+      <mat-form-field
+        data-test="signup-control-first-name"
+        class="form-field"
+        appearance="fill"
+      >
+        <mat-label>First name</mat-label>
+        <input
+          data-test="signup-control-input-first-name"
+          type="email"
+          matInput
+          formControlName="firstName"
+          placeholder=""
+        />
+        <mat-error
+          data-test="signup-control-first-name-error-message"
+          *ngIf="
+            fc['firstName'].hasError('required') && fc['firstName'].touched
+          "
+        >
+          Please enter first your name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input
+          data-test="signup-control-input-last-name"
+          type="email"
+          matInput
+          formControlName="lastName"
+          placeholder=""
+        />
+        <mat-error
+          data-test="signup-control-last-name-error-message"
+          *ngIf="fc['lastName'].hasError('required') && fc['lastName'].touched"
+        >
+          Please enter your last name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          data-test="signup-control-input-email"
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder=""
+        />
+        <mat-error
+          data-test="signup-control-email-error-message"
+          *ngIf="
+            fc['email'].hasError('email') &&
+            !fc['email'].hasError('required') &&
+            fc['lastName'].touched
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error
+          data-test="signup-control-email-error-message"
+          *ngIf="fc['email'].hasError('required') && fc['email'].touched"
+        >
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          data-test="signup-control-input-password"
+          type="password"
+          matInput
+          formControlName="password"
+          [errorStateMatcher]="matcher"
+        />
+
+        <mat-error
+          data-test="signup-control-password-error-message"
+          *ngIf="(signUpForm.hasError('password') && !signUpForm?.errors?.['password']?.['containsOnlyAlpha'])"
+        >
+          Please use alphabetic characters only (A-z)
+        </mat-error>
+
+        <mat-error
+          data-test="signup-control-password-error-message"
+          *ngIf="signUpForm.hasError('password') && (!signUpForm?.errors?.['password']?.['containsUpperCase'] || !signUpForm?.errors?.['password']?.['containsLowerCase'])"
+        >
+          Please use lower and uppercase letters
+        </mat-error>
+
+        <mat-error
+          data-test="signup-control-password-error-message"
+          *ngIf="signUpForm.hasError('password') && !signUpForm?.errors?.['password']?.['containsNoUserName']"
+        >
+          The password may not contain your first or last name
+        </mat-error>
+
+        <mat-error
+          data-test="signup-control-password-error-message"
+          *ngIf="fc['password'].hasError('required') && fc['password'].touched"
+        >
+          Password is <strong>required</strong>
+        </mat-error>
+
+        <mat-error
+          data-test="signup-control-password-error-message"
+          *ngIf="fc['password'].hasError('minlength') && fc['password'].touched"
+        >
+          Enter a minimum of <strong>8 characters</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="mat-small">
+        Your password should contain
+        <div>&bullet; a minimum of eight characters</div>
+        <div>&bullet; lower and uppercase letters</div>
+        <div>&bullet; not contain your first or last name</div>
+      </div>
+
+      <div class="btn-container">
+        <button
+          data-test="signup-control-submit"
+          mat-raised-button
+          color="primary"
+          data-test="signup-control-submit"
+          (keyup.enter)="onSubmit()"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Send
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

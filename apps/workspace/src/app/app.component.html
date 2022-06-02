@@ -1,1 +1,31 @@
-<fdx-asgmt-nx-welcome></fdx-asgmt-nx-welcome>
+<fdx-asgmt-sign-up
+  *ngIf="!state"
+  (status)="onFormEvent($event)"
+></fdx-asgmt-sign-up>
+
+<div *ngIf="state === 'error'">
+  <h2 data-test="message-error">Something went wrong</h2>
+  <button
+    mat-raised-button
+    color="primary"
+    data-test="btn-try-again"
+    (click)="state = null"
+    type="button"
+    class="btn btn-primary"
+  >
+    try again
+  </button>
+</div>
+<div *ngIf="state === 'success'">
+  <h2 data-test="message-success">Success</h2>
+  <button
+    mat-raised-button
+    color="primary"
+    data-test="btn-signup-again"
+    (click)="state = null"
+    type="button"
+    class="btn btn-primary"
+  >
+    Sign up again
+  </button>
+</div>
